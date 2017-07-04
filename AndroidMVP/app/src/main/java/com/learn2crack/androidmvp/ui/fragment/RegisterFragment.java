@@ -106,7 +106,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
         mListener.onLoginClicked();
     }
 
-    @OnClick(R.id.bt_login)
+    @OnClick(R.id.btn_register)
     void onRegisterClick() {
 
         String name = mEtName.getText().toString();
