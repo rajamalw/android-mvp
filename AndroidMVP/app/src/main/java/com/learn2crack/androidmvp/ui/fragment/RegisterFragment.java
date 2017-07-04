@@ -118,7 +118,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
         if (!validateFields(name)) {
 
             err++;
-            mTiPassword.setError("Name should not be empty !");
+            mTiName.setError("Name should not be empty !");
         }
 
         if (!validateEmail(email)) {
