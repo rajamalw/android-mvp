@@ -35,10 +35,13 @@ public class NetworkService {
 
     public static RESTInterface getRetrofit(){
 
+        OkHttpClient client = OkHttpProvider.getOkHttpInstance();
+
         return new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
                 .build().create(RESTInterface.class);
     }
 
@@ -46,7 +49,8 @@ public class NetworkService {
 
         String credentials = request.getEmail() + ":" + request.getPassword();
         String basic = "Basic " + Base64.encodeToString(credentials.getBytes(),Base64.NO_WRAP);
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        OkHttpClient client = OkHttpProvider.getOkHttpInstance();
+        OkHttpClient.Builder httpClient = client.newBuilder();
 
         httpClient.addInterceptor(chain -> {
 
@@ -68,7 +72,8 @@ public class NetworkService {
 
     public static RESTInterface getRetrofitWithAuth(String token) {
 
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        OkHttpClient client = OkHttpProvider.getOkHttpInstance();
+        OkHttpClient.Builder httpClient = client.newBuilder();
 
         httpClient.addInterceptor(chain -> {
 
