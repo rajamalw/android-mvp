@@ -124,13 +124,13 @@ public class LoginFragment extends Fragment implements LoginContract.View {
         if (!validateEmail(email)) {
 
             err++;
-            mTiEmail.setError("Email should be valid !");
+            mTiEmail.setError(getString(R.string.error_invalid_email));
         }
 
         if (!validateFields(password)) {
 
             err++;
-            mTiPassword.setError("Password should not be empty !");
+            mTiPassword.setError(getString(R.string.error_empty_password));
         }
 
         if (err == 0) {

@@ -125,13 +125,13 @@ public class ChangePasswordFragment extends DialogFragment implements ChangePass
         if (!validateFields(oldPassword)) {
 
             err++;
-            mTiOldPassword.setError("Password should not be empty !");
+            mTiOldPassword.setError(getString(R.string.error_empty_password));
         }
 
         if (!validateFields(newPassword)) {
 
             err++;
-            mTiNewPassword.setError("Password should not be empty !");
+            mTiNewPassword.setError(getString(R.string.error_empty_password));
         }
 
         if (err == 0) {
